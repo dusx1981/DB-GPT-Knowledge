@@ -181,6 +181,16 @@ class StorageManager(BaseComponent):
                 b=rag_config.bm25_b,
             )
 
+    def remove_from_cache(self, index_name: str):
+        """Remove store from cache after deletion.
+
+        Args:
+            index_name: The name of the index to remove from cache.
+        """
+        with self._cache_lock:
+            if index_name in self._store_cache:
+                del self._store_cache[index_name]
+
     @property
     def get_vector_supported_types(self) -> List[str]:
         """Get all supported types."""

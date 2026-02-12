@@ -72,7 +72,7 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
     const user = {
       user_channel: `dbgpt`,
       user_no: `001`,
-      nick_name: `dbgpt`,
+      nick_name: `joint-gpt`,
     };
     if (user) {
       localStorage.setItem(STORAGE_USERINFO_KEY, JSON.stringify(user));

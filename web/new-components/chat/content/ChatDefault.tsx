@@ -108,7 +108,7 @@ function ChatDefault() {
     >
       <div className='px-28 py-10 h-full flex flex-col justify-between'>
         <div>
-          <div className='flex justify-between'>
+          {/* <div className='flex justify-between'>
             <Segmented
               className='backdrop-filter h-10 backdrop-blur-lg bg-white bg-opacity-30 border border-white rounded-lg shadow p-1 dark:border-[#6f7f95] dark:bg-[#6f7f95] dark:bg-opacity-60'
               options={items}
@@ -136,7 +136,7 @@ function ChatDefault() {
               </span>
               <span>{t('Discover_more')}</span>
             </span>
-          </div>
+          </div> */}
           <TabContent apps={apps?.app_list || []} loading={loading} refresh={refresh} type={activeKey as any} />
           {helps && helps.length > 0 && (
             <div>

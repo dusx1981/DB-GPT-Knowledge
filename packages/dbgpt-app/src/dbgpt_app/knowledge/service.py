@@ -431,6 +431,8 @@ class KnowledgeService:
         )
         # delete vectors
         storage_connector.delete_vector_name(space.name)
+        # remove from cache to prevent stale connection issues when recreating
+        self.storage_manager.remove_from_cache(space_name)
         document_query = KnowledgeDocumentEntity(space=space.name)
         # delete chunks
         documents = knowledge_document_dao.get_documents(document_query)

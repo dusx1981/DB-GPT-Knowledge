@@ -1,90 +1,93 @@
 import { ChatContext } from '@/app/chat-context';
-import { apiInterceptors, getAppList, recommendApps } from '@/client/api';
+// import { apiInterceptors, getAppList, recommendApps } from '@/client/api';
+import { apiInterceptors } from '@/client/api';
 import { getRecommendQuestions } from '@/client/api/chat';
 import TabContent from '@/new-components/app/TabContent';
 import ChatInput from '@/new-components/chat/input/ChatInput';
 import { STORAGE_INIT_MESSAGE_KET } from '@/utils';
 import { useRequest } from 'ahooks';
-import { ConfigProvider, Segmented, SegmentedProps } from 'antd';
-import { t } from 'i18next';
+// import { ConfigProvider, Segmented, SegmentedProps } from 'antd';
+import { ConfigProvider } from 'antd';
+// import { t } from 'i18next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+// import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 function Default() {
   const { setCurrentDialogInfo } = useContext(ChatContext);
 
   const router = useRouter();
-  const [apps, setApps] = useState<any>({
-    app_list: [],
-    total_count: 0,
-  });
-  const [activeKey, setActiveKey] = useState('recommend');
-  const getAppListWithParams = (params: Record<string, string>) =>
-    apiInterceptors(
-      getAppList({
-        ...params,
-        page_no: '1',
-        page_size: '6',
-      }),
-    );
-  const getHotAppList = (params: Record<string, string>) =>
-    apiInterceptors(
-      recommendApps({
-        page_no: '1',
-        page_size: '6',
-        ...params,
-      }),
-    );
+  // const [apps, setApps] = useState<any>({
+  //   app_list: [],
+  //   total_count: 0,
+  // });
+  // const [activeKey, setActiveKey] = useState('recommend');
+  // const getAppListWithParams = (params: Record<string, string>) =>
+  //   apiInterceptors(
+  //     getAppList({
+  //       ...params,
+  //       page_no: '1',
+  //       page_size: '6',
+  //     }),
+  //   );
+  // const getHotAppList = (params: Record<string, string>) =>
+  //   apiInterceptors(
+  //     recommendApps({
+  //       page_no: '1',
+  //       page_size: '6',
+  //       ...params,
+  //     }),
+  //   );
   // 获取应用列表
-  const {
-    run: getAppListFn,
-    loading,
-    refresh,
-  } = useRequest(
-    async (app_name?: string) => {
-      switch (activeKey) {
-        case 'recommend':
-          return await getHotAppList({});
-        case 'used':
-          return await getAppListWithParams({
-            is_recent_used: 'true',
-            need_owner_info: 'true',
-            ...(app_name && { app_name }),
-          });
-        default:
-          return [];
-      }
-    },
-    {
-      manual: true,
-      onSuccess: res => {
-        const [_, data] = res;
-        if (activeKey === 'recommend') {
-          return setApps({
-            app_list: data,
-            total_count: data?.length || 0,
-          });
-        }
-        setApps(data || {});
-      },
-      debounceWait: 500,
-    },
-  );
-  useEffect(() => {
-    getAppListFn();
-  }, [activeKey, getAppListFn]);
+  // const {
+  //   run: getAppListFn,
+  //   loading,
+  //   refresh,
+  // } = useRequest(
+  //   async (app_name?: string) => {
+  //     switch (activeKey) {
+  //       case 'recommend':
+  //         return await getHotAppList({});
+  //       case 'used':
+  //         return await getAppListWithParams({
+  //           is_recent_used: 'true',
+  //           need_owner_info: 'true',
+  //           ...(app_name && { app_name }),
+  //         });
+  //       default:
+  //         return [];
+  //     }
+  //   },
+  //   {
+  //     manual: true,
+  //     onSuccess: res => {
+  //       const [_, data] = res;
+  //       if (activeKey === 'recommend') {
+  //         return setApps({
+  //           app_list: data,
+  //           total_count: data?.length || 0,
+  //         });
+  //       }
+  //       setApps(data || {});
+  //     },
+  //     debounceWait: 500,
+  //   },
+  // );
+  // useEffect(() => {
+  //   getAppListFn();
+  // }, [activeKey, getAppListFn]);
 
-  const items: SegmentedProps['options'] = [
-    {
-      value: 'recommend',
-      label: t('recommend_apps'),
-    },
-    {
-      value: 'used',
-      label: t('used_apps'),
-    },
-  ];
+  // const items: SegmentedProps['options'] = [
+  //   {
+  //     value: 'recommend',
+  //     label: t('recommend_apps'),
+  //   },
+  //   {
+  //     value: 'used',
+  //     label: t('used_apps'),
+  //   },
+  // ];
 
   // 获取推荐问题
   const { data: helps } = useRequest(async () => {
@@ -108,7 +111,7 @@ function Default() {
     >
       <div className='px-28 py-10 h-full flex flex-col justify-between'>
         <div>
-          <div className='flex justify-between'>
+          {/* <div className='flex justify-between'>
             <Segmented
               className='backdrop-filter h-10 backdrop-blur-lg bg-white bg-opacity-30 border border-white rounded-lg shadow p-1 dark:border-[#6f7f95] dark:bg-[#6f7f95] dark:bg-opacity-60'
               options={items}
@@ -136,7 +139,7 @@ function Default() {
               </span>
               <span>发现更多</span>
             </span>
-          </div>
+          </div> */}
           <TabContent apps={apps?.app_list || []} loading={loading} refresh={refresh} />
           {helps && helps.length > 0 && (
             <div>

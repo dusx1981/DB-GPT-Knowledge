@@ -20,7 +20,7 @@ import {
   PlusOutlined,
   SearchOutlined,
   SyncOutlined,
-  ToolFilled,
+  // ToolFilled,
   WarningOutlined,
 } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
@@ -157,9 +157,9 @@ export default function DocPanel(props: IProps) {
     props.onAddDoc(space.name);
   };
 
-  const handleArguments = () => {
-    setArgumentsShow(true);
-  };
+  // const handleArguments = () => {
+  //   setArgumentsShow(true);
+  // };
   const openGraphVisualPage = () => {
     router.push(`/knowledge/graph/?spaceName=${space.name}`);
   };
@@ -446,9 +446,9 @@ export default function DocPanel(props: IProps) {
         >
           {t('Add_Datasource')}
         </Button>
-        <Button size='middle' className='flex items-center mx-2' icon={<ToolFilled />} onClick={handleArguments}>
+        {/* <Button size='middle' className='flex items-center mx-2' icon={<ToolFilled />} onClick={handleArguments}>
           Arguments
-        </Button>
+        </Button> */}
         {space.vector_type === 'KnowledgeGraph' && (
           <Button
             size='middle'

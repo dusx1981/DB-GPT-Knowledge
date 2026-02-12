@@ -15,39 +15,39 @@ import './style.css';
 
 function ConstructLayout({ children }: { children: React.ReactNode }) {
   const items = [
-    {
-      key: 'app',
-      name: t('App'),
-      path: '/app',
-      icon: <AppstoreOutlined />,
-      // operations: (
-      //   <Button
-      //     className='border-none text-white bg-button-gradient h-full flex items-center'
-      //     icon={<PlusOutlined className='text-base' />}
-      //     // onClick={handleCreate}
-      //   >
-      //     {t('create_app')}
-      //   </Button>
-      // ),
-    },
-    {
-      key: 'flow',
-      name: t('awel_flow'),
-      icon: <ForkOutlined />,
-      path: '/flow',
-    },
-    {
-      key: 'models',
-      name: t('model_manage'),
-      path: '/models',
-      icon: <Icon component={ModelSvg} />,
-    },
-    {
-      key: 'database',
-      name: t('Database'),
-      icon: <ConsoleSqlOutlined />,
-      path: '/database',
-    },
+    // {
+    //   key: 'app',
+    //   name: t('App'),
+    //   path: '/app',
+    //   icon: <AppstoreOutlined />,
+    //   // operations: (
+    //   //   <Button
+    //   //     className='border-none text-white bg-button-gradient h-full flex items-center'
+    //   //     icon={<PlusOutlined className='text-base' />}
+    //   //     // onClick={handleCreate}
+    //   //   >
+    //   //     {t('create_app')}
+    //   //   </Button>
+    //   // ),
+    // },
+    // {
+    //   key: 'flow',
+    //   name: t('awel_flow'),
+    //   icon: <ForkOutlined />,
+    //   path: '/flow',
+    // },
+    // {
+    //   key: 'models',
+    //   name: t('model_manage'),
+    //   path: '/models',
+    //   icon: <Icon component={ModelSvg} />,
+    // },
+    // {
+    //   key: 'database',
+    //   name: t('Database'),
+    //   icon: <ConsoleSqlOutlined />,
+    //   path: '/database',
+    // },
     {
       key: 'knowledge',
       name: t('Knowledge_Space'),
@@ -60,18 +60,18 @@ function ConstructLayout({ children }: { children: React.ReactNode }) {
     //   path: '/agent',
     //   icon: <BuildOutlined />,
     // },
-    {
-      key: 'prompt',
-      name: t('Prompt'),
-      icon: <MessageOutlined />,
-      path: '/prompt',
-    },
-    {
-      key: 'dbgpts',
-      name: t('dbgpts_community'),
-      path: '/dbgpts',
-      icon: <BuildOutlined />,
-    },
+    // {
+    //   key: 'prompt',
+    //   name: t('Prompt'),
+    //   icon: <MessageOutlined />,
+    //   path: '/prompt',
+    // },
+    // {
+    //   key: 'dbgpts',
+    //   name: t('dbgpts_community'),
+    //   path: '/dbgpts',
+    //   icon: <BuildOutlined />,
+    // },
   ];
   const router = useRouter();
   const activeKey = router.pathname.split('/')[2];

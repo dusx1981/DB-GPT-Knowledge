@@ -3,6 +3,7 @@ import { DarkSvg, SunnySvg } from '@/components/icons';
 import UserBar from '@/new-components/layout/UserBar';
 import { STORAGE_LANG_KEY, STORAGE_THEME_KEY, STORAGE_USERINFO_KEY } from '@/utils/constants/index';
 import Icon, { GlobalOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+// import Icon, { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Popover, Tooltip } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 import cls from 'classnames';
@@ -263,21 +264,21 @@ function SideBar() {
         path: '/chat',
         isActive: pathname.startsWith('/chat'),
       },
-      {
-        key: 'explore',
-        name: t('explore'),
-        isActive: pathname === '/',
-        icon: (
-          <Image
-            key='image_explore'
-            src={pathname === '/' ? '/pictures/explore_active.png' : '/pictures/explore.png'}
-            alt='construct_image'
-            width={40}
-            height={40}
-          />
-        ),
-        path: '/',
-      },
+      // {
+      //   key: 'explore',
+      //   name: t('explore'),
+      //   isActive: pathname === '/',
+      //   icon: (
+      //     <Image
+      //       key='image_explore'
+      //       src={pathname === '/' ? '/pictures/explore_active.png' : '/pictures/explore.png'}
+      //       alt='construct_image'
+      //       width={40}
+      //       height={40}
+      //     />
+      //   ),
+      //   path: '/',
+      // },
       {
         key: 'construct',
         name: t('construct'),
@@ -291,23 +292,24 @@ function SideBar() {
             height={40}
           />
         ),
-        path: '/construct/app',
+        // path: '/construct/app',
+        path: '/construct/knowledge',
       },
-      {
-        key: 'models_evaluation',
-        name: t('models_evaluation'),
-        isActive: pathname.startsWith('/models_evaluation'),
-        icon: (
-          <Image
-            key='image_construct'
-            src={pathname.startsWith('/models_evaluation') ? '/pictures/app_active.png' : '/pictures/app.png'}
-            alt='construct_image'
-            width={40}
-            height={40}
-          />
-        ),
-        path: '/models_evaluation',
-      },
+      // {
+      //   key: 'models_evaluation',
+      //   name: t('models_evaluation'),
+      //   isActive: pathname.startsWith('/models_evaluation'),
+      //   icon: (
+      //     <Image
+      //       key='image_construct'
+      //       src={pathname.startsWith('/models_evaluation') ? '/pictures/app_active.png' : '/pictures/app.png'}
+      //       alt='construct_image'
+      //       width={40}
+      //       height={40}
+      //     />
+      //   ),
+      //   path: '/models_evaluation',
+      // },
     ];
     if (hasAdmin) {
       items.push({

@@ -294,6 +294,8 @@ class Service(BaseService[KnowledgeSpaceEntity, SpaceServeRequest, SpaceServeRes
         vector_store_connector = self.create_vector_store(space.name)
         # delete vectors
         vector_store_connector.delete_vector_name(space.name)
+        # remove from cache to prevent stale connection issues when recreating
+        self.storage_manager.remove_from_cache(space.name)
         document_query = KnowledgeDocumentEntity(space=space.name)
         # delete chunks
         documents = self._document_dao.get_documents(document_query)
